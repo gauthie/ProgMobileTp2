@@ -67,12 +67,36 @@ public class MainActivity extends AppCompatActivity {
                     if (group.getCheckedRadioButtonId() == R.id.radio_centimetre) tValue = tValue / 100;
                     float imc = pValue / (tValue * tValue);
                     String resultat="Votre IMC est " + imc+" . ";
-
+                    if(commentaire.isChecked()) resultat += interpreteIMC(imc);
                     result.setText(resultat);
                 }
             }
         }
     };
+
+    private String interpreteIMC(float imc) {
+        if(imc < 16.5 ){
+            return "famine";
+        }
+        else if(imc >= 16.5 && imc <18.5){
+            return "maigeur";
+        }
+        else if(imc >= 18.5 && imc < 25){
+            return "corpulence normale";
+        }
+        else if(imc <= 25 && imc < 30){
+            return "surpoids";
+        }
+        else if(imc >= 30 && imc < 35){
+            return "obésité modérée";
+        }
+        else if (imc > 35 && imc < 40){
+            return "obésité sévère";
+        }
+        else{
+            return "obésité morbide ou massive";
+        }
+    }
 
     private View.OnClickListener resetListener = new View.OnClickListener() {
 
