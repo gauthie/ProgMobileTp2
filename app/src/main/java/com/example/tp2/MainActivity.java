@@ -13,6 +13,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 public class MainActivity extends AppCompatActivity {
     Button envoyer = null;
     Button reset = null;
@@ -123,6 +124,9 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
             result.setText(texteInit);
+            if (taille.getText().toString().indexOf('.') > 0) {
+                group.check(R.id.radio_metre);
+            }
         }
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
